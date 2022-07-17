@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/database.js"></script>
+    <script src="./js/index.js"></script>
+    <title>WearTake</title>
+  </head>
+  <body>
+    <header>
+      <h1>Weartake</h1>
+      <nav>
+        <ul>
+          <li><a>Todos</a></li>
+          <li><a>Acessórios</a></li>
+          <li><a>Calçados</a></li>
+          <li><a>Camisetas</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <ul class="cards">
+          <li class="card">
+            <div class="imgcard">
+              <img src="./img/gorro.svg" />
+            </div>
+            <div class="textcard">
+              <span id="categoria">Camisetas</span>
+              <h2>Gorro</h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Possimus modi ipsa laboriosam quibusdam facere consectetur
+                numquam explicabo minus corrupti quasi officia ducimus, dolorum
+                eos autem pariatur quisquam at ad necessitatibus.
+              </p>
+              <span id="valor">R$ 100.00</span>
+              <button>Adicionar ao carrinho</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <div class="bar2">
+        <div class="buscar">
+          <input type="text" placeholder="Digite aqui sua pesquisa..." />
+          <button>Pesquisar</button>
+        </div>
+        <section class="carrinhoprin">
+          <h1>Carrinho de compras</h1>
+          <div class="listacard">
+            <h3>O carrinho está vazio..</h3>
+            <span>Adicione mais itens. </span>
+            <ul class="itenscarrinho"></ul>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
