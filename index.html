@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/database.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/database.js" defer></script>
+    <script src="./js/index.js" defer></script>
     <title>WearTake</title>
   </head>
   <body>
@@ -14,7 +14,7 @@
       <h1>Weartake</h1>
       <nav>
         <ul>
-          <li><a>Todos</a></li>
+          <li><a id="todos">Todos</a></li>
           <li><a>Acessórios</a></li>
           <li><a>Calçados</a></li>
           <li><a>Camisetas</a></li>
@@ -23,23 +23,7 @@
     </header>
     <main>
       <section>
-        <ul class="cards">
-          <li class="card">
-            <div class="imgcard">
-              <img src="./img/gorro.svg" />
-            </div>
-            <div class="textcard">
-              <span id="categoria">Camisetas</span>
-              <h2>Gorro</h2>
-              <p>
-                "O gorro Next.js chegou! Esta beldade bordada tem um ajuste
-                confortável que garante que..."
-              </p>
-              <span id="valor">R$ 100.00</span>
-              <button>Adicionar ao carrinho</button>
-            </div>
-          </li>
-        </ul>
+        <ul class="cards"></ul>
       </section>
       <div class="bar2">
         <div class="buscar">
@@ -49,9 +33,15 @@
         <section class="carrinhoprin">
           <h1>Carrinho de compras</h1>
           <div class="listacard">
-            <h3>O carrinho está vazio..</h3>
-            <span>Adicione mais itens. </span>
+            <div class="carrinhovazio">
+              <h3>O carrinho está vazio..</h3>
+              <span>Adicione mais itens. </span>
+            </div>
             <ul class="itenscarrinho"></ul>
+            <div class="result">
+              <h3>Quantidade:</h3>
+              <h2>Total:</h2>
+            </div>
           </div>
         </section>
       </div>

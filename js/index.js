@@ -2,23 +2,14 @@
 
 CARDS DE PRODUTOS
 
-
 CARDS DE FORMA DINÂMICA
 BOTAO DE COMPRA FUNCIONAL
 ADICIONAR O PRODUTO AO CARRINHO
-
-
 
 CARRINHO DE COMPRAS
 ADICIONAR OU REMOVER PRODUTOS 
 O CARRINHO DEVERA CONTAR OS ITENS 
 SOMAR O VALOR DOS ITENS E DAR O RESULTADO
-
-
-
-
-
-
 
 */
 
@@ -29,6 +20,7 @@ function createCard(card) {
   let categoria = card.tag;
   let valor = card.value;
   let descricao = card.description;
+  let buton = card.addCart;
 
   let tagLi = document.createElement("li");
   tagLi.classList.add("card");
@@ -38,20 +30,21 @@ function createCard(card) {
   let tagDivtext = document.createElement("div");
   tagDivtext.classList.add("textcard");
   let tagCategoria = document.createElement("span");
-  tagCategoria.id("categoria");
+  tagCategoria.id = "categoria";
   tagNomeProduto = document.createElement("h2");
   tagDescricao = document.createElement("p");
   tagValor = document.createElement("span");
-  tagValor.id("valor");
+  tagValor.id = "valor";
   tagButton = document.createElement("button");
 
+  tagNomeProduto.innerText = nome;
   tagImg.src = img;
   tagImg.alt = nome;
   tagCategoria.innerText = categoria;
-  tagValor.innerText = `R$ ${valor}`;
+  tagValor.innerText = `R$ ${valor}.00`;
   tagDescricao.innerText = descricao;
-  tagButton.innerText= 
-
+  tagButton.innerText = buton;
+  tagButton.setAttribute("id", id);
   tagLi.appendChild(tagDivImg);
   tagDivImg.appendChild(tagImg);
   tagLi.appendChild(tagDivtext);
@@ -60,4 +53,98 @@ function createCard(card) {
   tagDivtext.appendChild(tagDescricao);
   tagDivtext.appendChild(tagValor);
   tagDivtext.appendChild(tagButton);
+
+  return tagLi;
+}
+function listProducts(data, section) {
+  section.innerHTML = "";
+  for (let i = 0; i < data.length; i++) {
+    let produto = data[i];
+    let cardProduto = createCard(produto);
+    section.appendChild(cardProduto);
+  }
+}
+
+let secaoPrincipal = document.querySelector(".cards");
+
+let carrinhoVazio = document.querySelector(".carrinhovazio");
+
+secaoPrincipal.addEventListener("click", identificarClique);
+function identificarClique(event) {
+  let btnAdicionar = event.target;
+
+  if (btnAdicionar.tagName == "BUTTON") {
+    let idProduto = btnAdicionar.id;
+    let produto = data.find(function (produto) {
+      if (produto.id == idProduto) {
+        return produto;
+      }
+    });
+    carrinhoVazio.innerHTML = "";
+    addCarrinho(produto);
+  }
+}
+
+listProducts(data, secaoPrincipal);
+
+// JavaScript em relação ao Carrinho:
+
+let sectionCarrinho = document.querySelector(".itenscarrinho");
+
+let carrinhoCompras = [];
+
+let quantTot = document.querySelector(".result h3");
+let valorTot = document.querySelector(".result h2");
+if (carrinhoCompras.length == 0) {
+  quantTot.innerText = "Compre mais produtos.";
+  valorTot.innerText = ``;
+} else {
+  quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos`;
+  valorTot.innerText = `Valor :${somaCarrinho(carrinhoCompras)}.00 `;
+}
+
+function addCarrinho(produto) {
+  carrinhoCompras.push(produto);
+  listProducts(carrinhoCompras, sectionCarrinho);
+  if (carrinhoCompras.length == 1) {
+    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
+    valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+  } else {
+    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
+    valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+  }
+}
+
+function somaCarrinho(arr) {
+  let result = 0;
+  for (let i = 0; i < arr.length; i++) {
+    product = arr[i];
+    let value = product.value;
+    result += value;
+  }
+  return result;
+}
+
+sectionCarrinho.addEventListener("click", removeProduct);
+function removeProduct(event) {
+  let btnRemover = event.target;
+  if (btnRemover.tagName == "BUTTON") {
+    let produtoRemover = carrinhoCompras.find(function (produto) {});
+    let indexProduto = carrinhoCompras.indexOf(produtoRemover);
+    carrinhoCompras.splice(indexProduto, 1);
+    listProducts(carrinhoCompras, sectionCarrinho);
+
+    if (carrinhoCompras.length == 0) {
+      quantTot.innerText = "Compre mais produtos.";
+      valorTot.innerText = ``;
+      carrinhoVazio.innerHTML = `<h3>O carrinho está vazio..</h3>
+      <span>Adicione mais itens.</span>`;
+    } else if (carrinhoCompras.length == 1) {
+      quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
+      valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+    } else {
+      quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
+      valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+    }
+  }
 }
