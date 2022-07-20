@@ -53,7 +53,7 @@ nav ul li a {
 nav ul li a:hover {
   color: #37268c;
 }
-#todos {
+#Todos {
   font-weight: bold;
 }
 
@@ -218,6 +218,9 @@ main {
 
 .listacard ul li button {
   background-color: #9c2321;
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(#f24537, #c62d1f);
+  border-color: #d02718;
   padding: 5px;
   padding-top: 0px;
   position: absolute;
@@ -257,6 +260,6 @@ main {
 }
 .result h2 {
   text-align: center;
-  color: #37268c;
+  color: white;
   text-shadow: #2e245e 1px 1px 0;
 }

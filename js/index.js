@@ -64,6 +64,36 @@ function listProducts(data, section) {
     section.appendChild(cardProduto);
   }
 }
+//Menu nav
+
+let tagMenu = document.querySelector(".menuprin");
+
+tagMenu.addEventListener("click", function (event) {
+  let btnCategoria = event.target;
+  if (btnCategoria.tagName == "A") {
+    let idCategoria = btnCategoria.id;
+    resultadoCategoria = categorizar(idCategoria);
+    listProducts(resultadoCategoria, secaoPrincipal);
+  }
+});
+
+function categorizar(idCategoria) {
+  let categorias = [];
+  if (idCategoria == "Todos") {
+    categorias = data;
+    return categorias;
+  } else {
+    for (let i = 0; i < data.length; i++) {
+      let dataProduct = data[i].tag;
+      if (idCategoria == dataProduct) {
+        categorias.push(data[i]);
+      }
+    }
+  }
+  return categorias;
+}
+
+//Secao principal
 
 let secaoPrincipal = document.querySelector(".cards");
 
@@ -84,10 +114,35 @@ function identificarClique(event) {
     addCarrinho(produto);
   }
 }
-
 listProducts(data, secaoPrincipal);
 
-// JavaScript em relação ao Carrinho:
+//Javascript busca
+
+let inputBusca = document.querySelector(".buscar input");
+let btnBusca = document.querySelector(".buscar button");
+
+btnBusca.addEventListener("click", function (event) {
+  let valorUsuario = inputBusca.value;
+  let resultadoBusca = busca(valorUsuario);
+
+  listProducts(resultadoBusca, secaoPrincipal);
+});
+
+function busca(valor) {
+  let result = [];
+  for (let i = 0; i < data.length; i++) {
+    let pesquisa = valor.toLowerCase();
+    let nomeProduto = data[i].nameItem.toLowerCase();
+    let categoria = data[i].tag.toLowerCase();
+
+    if (nomeProduto.includes(pesquisa) || categoria.includes(pesquisa)) {
+      result.push(data[i]);
+    }
+  }
+  return result;
+}
+
+//JavaScript Carrinho
 
 let sectionCarrinho = document.querySelector(".itenscarrinho");
 
@@ -95,12 +150,13 @@ let carrinhoCompras = [];
 
 let quantTot = document.querySelector(".result h3");
 let valorTot = document.querySelector(".result h2");
+
 if (carrinhoCompras.length == 0) {
   quantTot.innerText = "Compre mais produtos.";
   valorTot.innerText = ``;
 } else {
   quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos`;
-  valorTot.innerText = `Valor :${somaCarrinho(carrinhoCompras)}.00 `;
+  valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 `;
 }
 
 function addCarrinho(produto) {
@@ -126,6 +182,7 @@ function somaCarrinho(arr) {
 }
 
 sectionCarrinho.addEventListener("click", removeProduct);
+
 function removeProduct(event) {
   let btnRemover = event.target;
   if (btnRemover.tagName == "BUTTON") {
