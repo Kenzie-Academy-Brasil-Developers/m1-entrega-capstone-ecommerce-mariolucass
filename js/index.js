@@ -13,6 +13,8 @@ SOMAR O VALOR DOS ITENS E DAR O RESULTADO
 
 */
 
+//Funções de criar o card e listar os produtos.
+
 function createCard(card) {
   let img = card.img;
   let id = card.id;
@@ -21,21 +23,22 @@ function createCard(card) {
   let valor = card.value;
   let descricao = card.description;
   let buton = card.addCart;
-
   let tagLi = document.createElement("li");
-  tagLi.classList.add("card");
   let tagDivImg = document.createElement("div");
-  tagDivImg.classList.add("imgcard");
   let tagImg = document.createElement("img");
   let tagDivtext = document.createElement("div");
-  tagDivtext.classList.add("textcard");
   let tagCategoria = document.createElement("span");
+  let tagNomeProduto = document.createElement("h2");
+  let tagDescricao = document.createElement("p");
+  let tagValor = document.createElement("span");
+  let tagButton = document.createElement("button");
+
+  tagLi.classList.add("card");
+  tagDivImg.classList.add("imgcard");
+  tagDivtext.classList.add("textcard");
   tagCategoria.id = "categoria";
-  tagNomeProduto = document.createElement("h2");
-  tagDescricao = document.createElement("p");
-  tagValor = document.createElement("span");
   tagValor.id = "valor";
-  tagButton = document.createElement("button");
+
   tagNomeProduto.innerText = nome;
   tagImg.src = img;
   tagImg.alt = nome;
@@ -44,6 +47,7 @@ function createCard(card) {
   tagDescricao.innerText = descricao;
   tagButton.innerText = buton;
   tagButton.setAttribute("id", id);
+
   tagLi.appendChild(tagDivImg);
   tagDivImg.appendChild(tagImg);
   tagLi.appendChild(tagDivtext);
@@ -55,6 +59,7 @@ function createCard(card) {
 
   return tagLi;
 }
+
 function listProducts(data, section) {
   section.innerHTML = "";
   for (let i = 0; i < data.length; i++) {
@@ -63,6 +68,7 @@ function listProducts(data, section) {
     section.appendChild(cardProduto);
   }
 }
+
 //Menu nav
 
 let tagMenu = document.querySelector(".menuprin");
@@ -110,8 +116,9 @@ function categorizar(idCategoria) {
 //Secao principal
 
 let secaoPrincipal = document.querySelector(".cards");
-
 let carrinhoVazio = document.querySelector(".carrinhovazio");
+let quantTot = document.querySelector(".result h3");
+let valorTot = document.querySelector(".result h2");
 
 secaoPrincipal.addEventListener("click", identificarClique);
 function identificarClique(event) {
@@ -128,6 +135,19 @@ function identificarClique(event) {
     addCarrinho(produto);
   }
 }
+
+function addCarrinho(produto) {
+  carrinhoCompras.push(produto);
+  listProducts(carrinhoCompras, sectionCarrinho);
+  if (carrinhoCompras.length == 1) {
+    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
+    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
+  } else {
+    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
+    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
+  }
+}
+
 listProducts(data, secaoPrincipal);
 
 //Javascript busca
@@ -169,32 +189,8 @@ function busca(valor) {
 
 //JavaScript Carrinho
 
-let sectionCarrinho = document.querySelector(".itenscarrinho");
-
 let carrinhoCompras = [];
-
-let quantTot = document.querySelector(".result h3");
-let valorTot = document.querySelector(".result h2");
-
-if (carrinhoCompras.length == 0) {
-  quantTot.innerText = "Adicione mais produtos.🛒";
-  valorTot.innerText = ``;
-} else {
-  quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos`;
-  valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 `;
-}
-
-function addCarrinho(produto) {
-  carrinhoCompras.push(produto);
-  listProducts(carrinhoCompras, sectionCarrinho);
-  if (carrinhoCompras.length == 1) {
-    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
-    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
-  } else {
-    quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
-    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
-  }
-}
+let sectionCarrinho = document.querySelector(".itenscarrinho");
 
 function somaCarrinho(arr) {
   let result = 0;
@@ -206,8 +202,15 @@ function somaCarrinho(arr) {
   return result;
 }
 
-sectionCarrinho.addEventListener("click", removeProduct);
+if (carrinhoCompras.length == 0) {
+  quantTot.innerText = "Adicione mais produtos.🛒";
+  valorTot.innerText = ``;
+} else {
+  quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos`;
+  valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 `;
+}
 
+sectionCarrinho.addEventListener("click", removeProduct);
 function removeProduct(event) {
   let btnRemover = event.target;
   if (btnRemover.tagName == "BUTTON") {
