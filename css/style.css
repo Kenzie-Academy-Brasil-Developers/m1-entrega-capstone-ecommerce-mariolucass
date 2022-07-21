@@ -29,6 +29,7 @@ header h1 {
   color: #d3dcde;
   cursor: pointer;
   transition: 0.3s;
+  text-shadow: #53877e 1px 1px 0;
 }
 header h1:hover {
   color: #85cd84;
@@ -54,6 +55,7 @@ nav ul {
 nav ul li a {
   color: #d3dcde;
   cursor: pointer;
+  text-shadow: #53877e 1px 1px 0;
 }
 nav ul li a:hover {
   color: #85cd84;
@@ -73,16 +75,29 @@ main {
   border-bottom: #85cd84 5px solid;
   border-radius: 0px 0px 10px 10px;
 }
-
+.principalis {
+  width: 1900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.principalis h1 {
+  font-size: 35px;
+}
+.principalis span {
+  font-size: 17px;
+}
 .textinfo {
+  background-color: #d3dcde;
   color: #1d4c4f;
   font-size: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-shadow: #e0e0e0 1px 1px 0;
   border-bottom: #85cd84 4px solid;
-  border-radius: 200px 200px 50px 50px;
+  border-radius: 0px 0px 75px 75px;
+  text-shadow: #b4e060 1px 1px 0;
 }
 .textinfo span {
   margin-bottom: 25px;
@@ -98,7 +113,7 @@ main {
   display: grid;
   width: 300px;
   border: 2px #53877e solid;
-  border-radius: 2px;
+  border-radius: 0px 0px 10px 10px;
   margin: 10px;
   transition: 0.3s;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -113,12 +128,16 @@ main {
   background-color: #525d5b;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 300px;
+  height: 200px;
   border-bottom: 2px solid #525d5b;
   border-radius: 0px 0px 20px 20px;
 }
 .imgcard img {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 20px 20px;
 }
 
 .textcard {
@@ -131,7 +150,7 @@ main {
   margin-bottom: 0px;
 }
 .textcard p {
-  color: #4e453f;
+  color: #d3dcde;
   font-size: 12px;
 }
 .textcard button {
@@ -146,6 +165,8 @@ main {
   background: transparent;
   font-family: "Inter", sans-serif;
   cursor: pointer;
+  margin-left: 50px;
+  margin-top: 10px;
 }
 
 #categoria {
@@ -155,7 +176,6 @@ main {
   color: #d3dcde;
   border-radius: 2px;
 }
-
 #valor {
   color: #85cd84;
   margin-bottom: 10px;
@@ -231,7 +251,7 @@ main {
   overflow-x: hidden;
 }
 .listacard ul li {
-  border-radius: 20px 0px 20px 0px;
+  border-radius: 20px 0px 20px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -244,15 +264,20 @@ main {
   transition: 0.3s;
 }
 .listacard ul li .imgcard {
+  display: flex;
+  align-items: center;
   background-color: #53877e;
   border-bottom: 0px;
   border-right: #85cd84 2px solid;
-  border-radius: 0px;
+  border-radius: 20px;
+  width: 150px;
+  height: 100px;
 }
 
 .listacard ul li img {
   max-width: 57px;
   height: 57px;
+  border-radius: 5px;
 }
 
 .listacard .textcard {
@@ -274,7 +299,7 @@ main {
   width: 29px;
   height: 29px;
   border-radius: 0px 0px 0px 20px;
-  top: 0px;
+  top: -10px;
   opacity: 0;
   color: transparent;
   line-height: 29px;
@@ -319,4 +344,14 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   border-radius: 20px 20px 0px 0px;
+}
+footer h1 {
+  color: #d3dcde;
+  cursor: pointer;
+  text-shadow: #53877e 1px 1px 0;
+}
+footer ul li {
+  color: #d3dcde;
+  cursor: pointer;
+  text-shadow: #53877e 1px 1px 0;
 }

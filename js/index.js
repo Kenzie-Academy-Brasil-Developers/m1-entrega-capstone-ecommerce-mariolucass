@@ -36,7 +36,6 @@ function createCard(card) {
   tagValor = document.createElement("span");
   tagValor.id = "valor";
   tagButton = document.createElement("button");
-
   tagNomeProduto.innerText = nome;
   tagImg.src = img;
   tagImg.alt = nome;
@@ -67,6 +66,9 @@ function listProducts(data, section) {
 //Menu nav
 
 let tagMenu = document.querySelector(".menuprin");
+let tagSectionAbove = document.querySelector(".principal");
+let tagTituloFalta = document.querySelector(".principal h1");
+let tagSpanFalta = document.querySelector(".principal span");
 
 tagMenu.addEventListener("click", function (event) {
   let btnCategoria = event.target;
@@ -74,11 +76,13 @@ tagMenu.addEventListener("click", function (event) {
     let idCategoria = btnCategoria.id;
     resultadoCategoria = categorizar(idCategoria);
     listProducts(resultadoCategoria, secaoPrincipal);
+    console.log(resultadoCategoria);
   }
 });
 
 function categorizar(idCategoria) {
   let categorias = [];
+
   if (idCategoria == "Todos") {
     categorias = data;
     return categorias;
@@ -90,7 +94,17 @@ function categorizar(idCategoria) {
       }
     }
   }
-  return categorias;
+  if (categorias.length >= 1) {
+    tagTituloFalta.innerText = "";
+    tagSpanFalta.innerText = "";
+    tagSectionAbove.className = "";
+    return categorias;
+  } else {
+    tagSectionAbove.className = "principalis";
+    tagTituloFalta.innerText =
+      "Desculpe, não encontramos produtos com esse filtro correspondente. 😔";
+    tagSpanFalta.innerText = "Que tal navegar em outras categorias?";
+  }
 }
 
 //Secao principal
@@ -137,9 +151,20 @@ function busca(valor) {
 
     if (nomeProduto.includes(pesquisa) || categoria.includes(pesquisa)) {
       result.push(data[i]);
+    } else {
     }
   }
-  return result;
+  if (result.length >= 1) {
+    tagTituloFalta.innerText = "";
+    tagSpanFalta.innerText = "";
+    tagSectionAbove.className = "";
+    return result;
+  } else {
+    tagSectionAbove.className = "principalis";
+    tagTituloFalta.innerText =
+      "Desculpe, não encontramos produtos com esse filtro correspondente. 😔";
+    tagSpanFalta.innerText = "Que tal pesquisar outras palavras-chaves?";
+  }
 }
 
 //JavaScript Carrinho
@@ -152,11 +177,11 @@ let quantTot = document.querySelector(".result h3");
 let valorTot = document.querySelector(".result h2");
 
 if (carrinhoCompras.length == 0) {
-  quantTot.innerText = "Compre mais produtos.";
+  quantTot.innerText = "Adicione mais produtos.🛒";
   valorTot.innerText = ``;
 } else {
   quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos`;
-  valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 `;
+  valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 `;
 }
 
 function addCarrinho(produto) {
@@ -164,10 +189,10 @@ function addCarrinho(produto) {
   listProducts(carrinhoCompras, sectionCarrinho);
   if (carrinhoCompras.length == 1) {
     quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
-    valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
   } else {
     quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
-    valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+    valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
   }
 }
 
@@ -192,16 +217,20 @@ function removeProduct(event) {
     listProducts(carrinhoCompras, sectionCarrinho);
 
     if (carrinhoCompras.length == 0) {
-      quantTot.innerText = "Compre mais produtos.";
+      quantTot.innerText = "Adicione mais produtos.🛒";
       valorTot.innerText = ``;
       carrinhoVazio.innerHTML = `<h3>O carrinho está vazio..</h3>
       <span>Adicione mais itens.</span>`;
     } else if (carrinhoCompras.length == 1) {
       quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
-      valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+      valorTot.innerText = `Valor Total: ${somaCarrinho(
+        carrinhoCompras
+      )}.00 R$`;
     } else {
       quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
-      valorTot.innerText = `Valor : ${somaCarrinho(carrinhoCompras)}.00 R$`;
+      valorTot.innerText = `Valor Total: ${somaCarrinho(
+        carrinhoCompras
+      )}.00 R$`;
     }
   }
 }
