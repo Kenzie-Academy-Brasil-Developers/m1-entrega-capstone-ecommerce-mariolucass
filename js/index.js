@@ -71,7 +71,7 @@ function listProducts(data, section) {
 
 //Menu nav
 
-let tagMenu = document.querySelector(".menuprin");
+let tagMenu = document.getElementById("menuprin");
 let tagSectionAbove = document.querySelector(".principal");
 let tagTituloFalta = document.querySelector(".principal h1");
 let tagSpanFalta = document.querySelector(".principal span");
@@ -123,7 +123,6 @@ let valorTot = document.querySelector(".result h2");
 secaoPrincipal.addEventListener("click", identificarClique);
 function identificarClique(event) {
   let btnAdicionar = event.target;
-
   if (btnAdicionar.tagName == "BUTTON") {
     let idProduto = btnAdicionar.id;
     let produto = data.find(function (produto) {
@@ -131,7 +130,7 @@ function identificarClique(event) {
         return produto;
       }
     });
-    carrinhoVazio.innerHTML = "";
+
     addCarrinho(produto);
   }
 }
@@ -142,10 +141,11 @@ function addCarrinho(produto) {
   if (carrinhoCompras.length == 1) {
     quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produto.`;
     valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
-  } else {
+  } else if (carrinhoCompras.length > 1) {
     quantTot.innerText = `Quantidade : ${carrinhoCompras.length} Produtos.`;
     valorTot.innerText = `Valor Total: ${somaCarrinho(carrinhoCompras)}.00 R$`;
   }
+  carrinhoVazio.innerHTML = "";
 }
 
 listProducts(data, secaoPrincipal);
@@ -214,7 +214,9 @@ sectionCarrinho.addEventListener("click", removeProduct);
 function removeProduct(event) {
   let btnRemover = event.target;
   if (btnRemover.tagName == "BUTTON") {
-    let produtoRemover = carrinhoCompras.find(function (produto) {});
+    let produtoRemover = carrinhoCompras.find(function (produto) {
+      produto.id === btnRemover.id;
+    });
     let indexProduto = carrinhoCompras.indexOf(produtoRemover);
     carrinhoCompras.splice(indexProduto, 1);
     listProducts(carrinhoCompras, sectionCarrinho);
