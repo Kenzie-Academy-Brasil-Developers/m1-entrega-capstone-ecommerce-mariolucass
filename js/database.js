@@ -3,7 +3,7 @@
 const data = [
   {
     id: 1,
-    img: "/_img/jaqueta.svg",
+    img: "./img/jaqueta.svg",
     nameItem: "Lightweight Jacket",
     description:
       "Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...",
@@ -13,7 +13,7 @@ const data = [
   },
   {
     id: 2,
-    img: "/_img/gorro.svg",
+    img: "./img/gorro.svg",
     nameItem: "Black Hat",
     description:
       "O gorro Next.js chegou! Esta beldade bordada tem um ajuste confortável que garante que...",
@@ -23,7 +23,7 @@ const data = [
   },
   {
     id: 3,
-    img: "/_img/mascara.svg",
+    img: "./img/mascara.svg",
     nameItem: "Mask",
     description:
       "Esta máscara facial durável é feita de duas camadas de tecido tratado e possui presilhas...",
@@ -33,7 +33,7 @@ const data = [
   },
   {
     id: 4,
-    img: "/_img/camiseta_preta.svg",
+    img: "./img/camiseta_preta.svg",
     nameItem: "T-Shirt",
     description:
       "Esta t-shirt é imprescindível no seu guarda-roupa, combinando o caimento intemporal de...",
@@ -43,7 +43,7 @@ const data = [
   },
   {
     id: 5,
-    img: "/_img/camiseta_branca.svg",
+    img: "./img/camiseta_branca.svg",
     nameItem: "Short-Sleeve T-Shirt",
     description:
       "Agora você encontrou a camiseta básica do seu guarda-roupa. É feito de um mais grosso...",
@@ -53,7 +53,7 @@ const data = [
   },
   {
     id: 6,
-    img: "/_img/moletom.svg",
+    img: "./img/moletom.svg",
     nameItem: "Champion Jacket",
     description:
       "Proteja-se dos elementos com esta jaqueta embalável Champion. Esta jaqueta de poliést...",
@@ -63,7 +63,7 @@ const data = [
   },
   {
     id: 7,
-    img: "/_img/hat-trip.jpg",
+    img: "./img/hat-trip.jpg",
     nameItem: "Hat Trip",
     description:
       "Viaje cada vez mais elegante com esse acessório importante no look de viagem conhe...",
@@ -73,7 +73,7 @@ const data = [
   },
   {
     id: 8,
-    img: "/_img/stranger-things-t-shirt.jpg",
+    img: "./img/stranger-things-t-shirt.jpg",
     nameItem: "Stranger Things T-Shirt",
     description:
       "Pra quem é fã dessa obra que representa um interesse da população que gosta de seri...",
@@ -83,7 +83,7 @@ const data = [
   },
   {
     id: 9,
-    img: "/_img/t-shirt-awsme.jpg",
+    img: "./img/t-shirt-awsme.jpg",
     nameItem: "T-shirt Awsme",
     description:
       "Essa é pra quem curte uma moda mais despojada e é fã de artigos de street wear..",
@@ -93,7 +93,7 @@ const data = [
   },
   {
     id: 10,
-    img: "/_img/sun-hat.jpg",
+    img: "./img/sun-hat.jpg",
     nameItem: "Sun Hat",
     description:
       "Proteja-se dos raios solares com esse chapéu que combina com dias bastantes ensolarado..",
@@ -103,7 +103,7 @@ const data = [
   },
   {
     id: 11,
-    img: "/_img/hat-yellow.jpg",
+    img: "./img/hat-yellow.jpg",
     nameItem: "Yellow Hat",
     description:
       "Esse gorro é pra quem gosta de se vestir bem, cabe bem em qualquer estilo e comb..",
@@ -113,7 +113,7 @@ const data = [
   },
   {
     id: 12,
-    img: "/_img/hat-beach.jpg",
+    img: "./img/hat-beach.jpg",
     nameItem: "Hat Beach",
     description:
       "Esse chapéu é pra quem curte aqueles dias na praia na piscina, ou ficar de boa no feriad..",
@@ -123,7 +123,7 @@ const data = [
   },
   {
     id: 13,
-    img: "/_img/hat-705.jpg",
+    img: "./img/hat-705.jpg",
     nameItem: "Hat Streetwear",
     description:
       "Esse gorro é pra quem curte a moda mais streetwear apostando em looks derivados d..",
@@ -133,7 +133,7 @@ const data = [
   },
   {
     id: 14,
-    img: "/_img/t-shirt-colors.jpg",
+    img: "./img/t-shirt-colors.jpg",
     nameItem: "T-shirt Colors",
     description:
       "Esse conjunto de camisas servem tanto pra ficar em casa curtindo o dia-a dia como dar uma volt..",
@@ -143,7 +143,7 @@ const data = [
   },
   {
     id: 15,
-    img: "/_img/t-shirt-basic-white.jpg",
+    img: "./img/t-shirt-basic-white.jpg",
     nameItem: "T-shirt Basic White",
     description:
       "Essa camiseta basica é sempre uma boa aposta pois branco combina com tudo né?! Aproveite..",
